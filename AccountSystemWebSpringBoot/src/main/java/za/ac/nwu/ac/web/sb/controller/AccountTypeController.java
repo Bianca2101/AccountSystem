@@ -12,17 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
 import za.ac.nwu.ac.domain.service.GeneralResponse;
 import za.ac.nwu.ac.logic.flow.FetchAccountTypeFLow;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("account-type")
 public class AccountTypeController {
 
-    private final FetchAccountTypeFlow fetchAccountTypeFLow;
+    private final FetchAccountTypeFLow fetchAccountTypeFLow;
 
     @Autowired
-    public AccountTypeController(FetchAccountTypeFlow fetchAccountTypeFLow){
+    public AccountTypeController(FetchAccountTypeFLow fetchAccountTypeFLow){
         this.fetchAccountTypeFLow = fetchAccountTypeFLow;
     }
 
@@ -36,8 +35,8 @@ public class AccountTypeController {
     })
     public ResponseEntity<GeneralResponse<List<AccountTypeDto>>> getAll()
     {
-        List<AccountTypeDto> accountTypes = fetchAccountTypeFLow.getAllAccountTypes();
-        GeneralResponse<List<AccountTypeDto>> response = new GeneralResponse<>(true,"No types found");
+        List<AccountTypeDto> accountTypes = fetchAccountTypeFLow.getAllAccountTypes();         //>>insert accountTypes at payload if error
+        GeneralResponse<List<AccountTypeDto>> response = new GeneralResponse<>(true,accountTypes);
         return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
