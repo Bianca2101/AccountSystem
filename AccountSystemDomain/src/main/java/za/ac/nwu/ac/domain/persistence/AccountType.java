@@ -22,7 +22,7 @@ public class AccountType implements Serializable {
     //@JsonSerializable(using = LocalDateSerializer.class)
     //@JsonSerializable(using = LocalDateDeserializer.class)
 
-    public AccountType() {
+    public AccountType(String mnemonic, String accountTypeName, LocalDate creationDate) {
     }
 
     public AccountType(Long accountTypeId, String mnemonic, String accountTypeName, LocalDate creationDate) {
