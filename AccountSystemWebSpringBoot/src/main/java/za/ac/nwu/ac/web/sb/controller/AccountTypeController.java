@@ -14,6 +14,7 @@ import za.ac.nwu.ac.domain.service.GeneralResponse;
 import za.ac.nwu.ac.logic.flow.CreateAccountTypeFlow;
 import za.ac.nwu.ac.logic.flow.FetchAccountTypeFLow;
 
+
 import java.util.List;
 
 @RestController
@@ -60,4 +61,24 @@ public class AccountTypeController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @GetMapping("{mnemonic}")
+    @ApiOperation(value = "Fetches the specified AccountType.", notes = "Fetches the AccountType corresponding to the given mnemonic.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Goal Found"),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
+            @ApiResponse(code = 404, message = "Resource not found", response = GeneralResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)
+    })
+    public ResponseEntity<GeneralResponse<AccountTypeDto>>getAccountType(
+            @ApiParam(value = "The mnemonic that uniquely identifies the AccountType.",
+                    example = "MILES",
+                    name = "mnemonic",
+                    required = true)
+            @PathVariable("mnemonic") final String mnemonic){
+        AccountTypeDto accountType = fetchAccountTypeFLow.getAccountTypeByMnemonic(mnemonic);
+
+        GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountType);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

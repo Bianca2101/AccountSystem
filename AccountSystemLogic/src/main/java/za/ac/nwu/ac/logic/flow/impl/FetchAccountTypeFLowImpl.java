@@ -12,9 +12,7 @@ import java.util.List;
 @Component
 public class FetchAccountTypeFLowImpl implements FetchAccountTypeFLow {
 
-
     private final AccountTypeTranslator accountTypeTranslator;
-
 
     @Autowired
     public FetchAccountTypeFLowImpl(AccountTypeTranslator accountTypeTranslator){
@@ -24,5 +22,10 @@ public class FetchAccountTypeFLowImpl implements FetchAccountTypeFLow {
     @Override
     public List<AccountTypeDto> getAllAccountTypes(){
        return accountTypeTranslator.getAllAccountTypes();
+    }
+
+    @Override
+    public AccountTypeDto getAccountTypeByMnemonic(String mnemonic){
+        return accountTypeTranslator.getAccountTypeByMnemonicNativeQuery(mnemonic);
     }
 }

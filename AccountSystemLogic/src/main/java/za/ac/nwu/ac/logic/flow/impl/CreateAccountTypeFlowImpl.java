@@ -21,7 +21,10 @@ public class CreateAccountTypeFlowImpl implements CreateAccountTypeFlow {
 
     @Override
     public AccountTypeDto create(AccountTypeDto accountType){
-        accountType.setCreationDate(LocalDate.now());
+        if (null == accountType.getCreationDate()){
+            accountType.setCreationDate(LocalDate.now());
+        }
+        return accountTypeTranslator.create(accountType);
     }
-    return accountTypeTranslator.create(accountType);
+
 }
