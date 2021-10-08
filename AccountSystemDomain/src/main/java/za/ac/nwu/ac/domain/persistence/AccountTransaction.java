@@ -18,15 +18,26 @@ public class AccountTransaction implements Serializable {
     private Long amount;
     private LocalDate transactionDate;
 
+    private AccountTransactionDetails details;
+
     public AccountTransaction() {
     }
 
-    public AccountTransaction(Long transactionID, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate) {
+    public AccountTransaction(Long transactionID, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate, AccountTransactionDetails details) {
         this.transactionID = transactionID;
         this.accountType = accountType;
         this.memberId = memberId;
         this.amount = amount;
         this.transactionDate = transactionDate;
+        this.details = details;
+    }
+
+    public AccountTransactionDetails getDetails() {
+        return details;
+    }
+
+    public void setDetails(AccountTransactionDetails details) {
+        this.details = details;
     }
 
     @Id
@@ -83,12 +94,12 @@ public class AccountTransaction implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTransaction that = (AccountTransaction) o;
-        return Objects.equals(transactionID, that.transactionID) && Objects.equals(accountType, that.accountType) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
+        return Objects.equals(transactionID, that.transactionID) && Objects.equals(accountType, that.accountType) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate) && Objects.equals(details, that.details);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(transactionID, accountType, memberId, amount, transactionDate);
+        return Objects.hash(transactionID, accountType, memberId, amount, transactionDate, details);
     }
 
     @Override
