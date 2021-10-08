@@ -1,0 +1,25 @@
+-------------------------------------------------------------------------------
+Test set: za.ac.nwu.ac.repo.persistence.AccountTypeRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 4.006 s <<< FAILURE! - in za.ac.nwu.ac.repo.persistence.AccountTypeRepositoryTest
+getAccountTypeDtoByMnemonic(za.ac.nwu.ac.repo.persistence.AccountTypeRepositoryTest)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'accountTypeRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract za.ac.nwu.ac.domain.persistence.AccountType za.ac.nwu.ac.repo.persistence.AccountTypeRepository.getAccountTypeDtoByMnemonic(java.lang.String)!
+Caused by: java.lang.IllegalArgumentException: Validation failed for query for method public abstract za.ac.nwu.ac.domain.persistence.AccountType za.ac.nwu.ac.repo.persistence.AccountTypeRepository.getAccountTypeDtoByMnemonic(java.lang.String)!
+Caused by: java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: unexpected token: at near line 1, column 84 [SELECT new za.ac.nwu.ac.domain.dto.AccountTypeDto(           at.mnemonic           at.accountTypeName           at.creationDate       FROM            za.ac.nwu.ac.domain.persistence.AccountType at       WHERE at.mnemonic = :mnemonic ]
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: unexpected token: at near line 1, column 84 [SELECT new za.ac.nwu.ac.domain.dto.AccountTypeDto(           at.mnemonic           at.accountTypeName           at.creationDate       FROM            za.ac.nwu.ac.domain.persistence.AccountType at       WHERE at.mnemonic = :mnemonic ]
+
+getAccountTypeByMnemonic(za.ac.nwu.ac.repo.persistence.AccountTypeRepositoryTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'accountTypeRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract za.ac.nwu.ac.domain.persistence.AccountType za.ac.nwu.ac.repo.persistence.AccountTypeRepository.getAccountTypeDtoByMnemonic(java.lang.String)!
+Caused by: java.lang.IllegalArgumentException: Validation failed for query for method public abstract za.ac.nwu.ac.domain.persistence.AccountType za.ac.nwu.ac.repo.persistence.AccountTypeRepository.getAccountTypeDtoByMnemonic(java.lang.String)!
+Caused by: java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: unexpected token: at near line 1, column 84 [SELECT new za.ac.nwu.ac.domain.dto.AccountTypeDto(           at.mnemonic           at.accountTypeName           at.creationDate       FROM            za.ac.nwu.ac.domain.persistence.AccountType at       WHERE at.mnemonic = :mnemonic ]
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: unexpected token: at near line 1, column 84 [SELECT new za.ac.nwu.ac.domain.dto.AccountTypeDto(           at.mnemonic           at.accountTypeName           at.creationDate       FROM            za.ac.nwu.ac.domain.persistence.AccountType at       WHERE at.mnemonic = :mnemonic ]
+
+getAccountTypeByMnemonicNativeQuery(za.ac.nwu.ac.repo.persistence.AccountTypeRepositoryTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'accountTypeRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract za.ac.nwu.ac.domain.persistence.AccountType za.ac.nwu.ac.repo.persistence.AccountTypeRepository.getAccountTypeDtoByMnemonic(java.lang.String)!
+Caused by: java.lang.IllegalArgumentException: Validation failed for query for method public abstract za.ac.nwu.ac.domain.persistence.AccountType za.ac.nwu.ac.repo.persistence.AccountTypeRepository.getAccountTypeDtoByMnemonic(java.lang.String)!
+Caused by: java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: unexpected token: at near line 1, column 84 [SELECT new za.ac.nwu.ac.domain.dto.AccountTypeDto(           at.mnemonic           at.accountTypeName           at.creationDate       FROM            za.ac.nwu.ac.domain.persistence.AccountType at       WHERE at.mnemonic = :mnemonic ]
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: unexpected token: at near line 1, column 84 [SELECT new za.ac.nwu.ac.domain.dto.AccountTypeDto(           at.mnemonic           at.accountTypeName           at.creationDate       FROM            za.ac.nwu.ac.domain.persistence.AccountType at       WHERE at.mnemonic = :mnemonic ]
+
