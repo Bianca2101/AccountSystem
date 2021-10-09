@@ -18,18 +18,17 @@ public class AccountTransaction implements Serializable {
     private Long amount;
     private LocalDate transactionDate;
 
-    private AccountTransactionDetails details;
 
-    public AccountTransaction(Long transactionID, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate) {
+
+    public AccountTransaction() {
     }
 
-    public AccountTransaction(Long transactionID, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate, AccountTransactionDetails details) {
+    public AccountTransaction(Long transactionID, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate) {
         this.transactionID = transactionID;
         this.accountType = accountType;
         this.memberId = memberId;
         this.amount = amount;
         this.transactionDate = transactionDate;
-        this.details = details;
     }
 
 
@@ -83,14 +82,7 @@ public class AccountTransaction implements Serializable {
         this.transactionDate = transactionDate;
     }
 
-    @OneToOne(targetEntity = AccountTransactionDetails.class, fetch = FetchType.LAZY, mappedBy = "accountTransaction"/*, orphanRemoval = true, cascade = CascadeType.PERSIST*/)
-    public AccountTransactionDetails getDetails() {
-        return details;
-    }
 
-    public void setDetails(AccountTransactionDetails details) {
-        this.details = details;
-    }
 
     @Override
     public boolean equals(Object o) {

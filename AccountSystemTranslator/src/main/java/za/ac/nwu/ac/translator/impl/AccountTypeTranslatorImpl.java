@@ -6,6 +6,8 @@ import za.ac.nwu.ac.domain.dto.AccountTypeDto;
 import za.ac.nwu.ac.domain.persistence.AccountType;
 import za.ac.nwu.ac.repo.persistence.AccountTypeRepository;
 import za.ac.nwu.ac.translator.AccountTypeTranslator;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,5 +77,15 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
     @Override
     public void someMethod() {
 
+    }
+
+    @Override
+    public AccountTypeDto deleteAccountType(String mnemonic) {
+        return null;
+    }
+
+    @Override
+    public AccountTypeDto updateAccountType(String mnemonic, String newAccountTypeName, LocalDate newCreationDate) {
+        return null;
     }
 }
