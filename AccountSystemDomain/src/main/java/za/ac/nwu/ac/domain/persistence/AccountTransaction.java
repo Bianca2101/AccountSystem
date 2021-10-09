@@ -83,7 +83,7 @@ public class AccountTransaction implements Serializable {
         this.transactionDate = transactionDate;
     }
 
-    @OneToOne(targetEntity = AccountTransactionDetails.class, fetch = FetchType.LAZY, mappedBy = "accountTransaction", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    @OneToOne(targetEntity = AccountTransactionDetails.class, fetch = FetchType.LAZY, mappedBy = "accountTransaction"/*, orphanRemoval = true, cascade = CascadeType.PERSIST*/)
     public AccountTransactionDetails getDetails() {
         return details;
     }

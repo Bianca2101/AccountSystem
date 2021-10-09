@@ -12,6 +12,9 @@ import za.ac.nwu.ac.translator.AccountTransactionTranslator;
 
 @Component
 public class CreateAccountTransactionFlowImpl implements CreateAccountTransactionFlow {
+
+
+
     private final AccountTransactionTranslator accountTransactionTranslator;
     private final AccountTransactionDetailsTranslator accountTransactionDetailsTranslator;
     private final FetchAccountTypeFLow fetchAccountTypeFLow;
@@ -33,7 +36,8 @@ public class CreateAccountTransactionFlowImpl implements CreateAccountTransactio
 
         if(null != accountTransactionDto.getDetails()){
             AccountTransactionDetails accountTransactionDetails = accountTransactionDto.getDetails().buildAccountTransactionDetails(createdAccountTransaction);
-            accountTransactionDetailsTranslator.save(accountTransactionDetails);
+            createdAccountTransaction.setDetails(accountTransactionDetails);
+            accountTransactionDetailsTranslator.save(createdAccountTransaction.getDetails());
         }
         return new AccountTransactionDto(createdAccountTransaction);
     }

@@ -52,7 +52,7 @@ public class AccountTransactionDto {
     }
 
     @JsonIgnore
-    public AccountTransaction buildAccountTransaction(AccountType accountType){
+    public AccountTransaction buildAccountTransaction(AccountTypeDto accountType){
         return new AccountTransaction(this.getTransactionID(), accountType, this.getMemberId(), this.getAmount(), this.getTransactionDate());
     }
 
