@@ -11,12 +11,17 @@ public class AccountTransactionDetailsDto{
     String partnerName;
     Long numberOfItems;
 
-    public AccountTransactionDetailsDto(AccountTransactionDetails details) {
+    public AccountTransactionDetailsDto() {
     }
 
     public AccountTransactionDetailsDto(String partnerName, Long numberOfItems) {
         this.partnerName = partnerName;
         this.numberOfItems = numberOfItems;
+    }
+
+    public AccountTransactionDetailsDto(AccountTransactionDetails details) {
+        this.partnerName = details.getPartnerName();
+        this.numberOfItems = details.getNumberOfItems();
     }
 
     @JsonIgnore

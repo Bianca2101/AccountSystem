@@ -11,7 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.nwu.ac.domain.dto.AccountTransactionDto;
 import za.ac.nwu.ac.domain.service.GeneralResponse;
+import za.ac.nwu.ac.logic.flow.CreateAccountTransactionFlow;
 import za.ac.nwu.ac.logic.flow.FetchAccountTransactionFlow;
+
 import java.util.List;
 
 @RestController
@@ -36,9 +38,9 @@ public class AccountTransactionController {
     public ResponseEntity<GeneralResponse<AccountTransactionDto>> create(
             @ApiParam(value = "Request body to create a new AccountTransaction.",
                     required = true)
-            @RequestBody AccountTransactionDto accountTransactionDto){
-        AccountTransactionDto accountTransactionResponse = createAccountTransactionFlow.create(accountTransaction);
-        GeneralResponse<AccountTransactionDto> response = new GeneralResponse<>(true, accountTransactionResponse);
+            @RequestBody AccountTransactionDto AccountTransaction){
+        AccountTransactionDto AccountTransactionResponse = createAccountTransactionFlow.create(AccountTransaction);
+        GeneralResponse<AccountTransactionDto> response = new GeneralResponse<>(true, AccountTransactionResponse);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
@@ -70,7 +72,7 @@ public class AccountTransactionController {
                     required = true)
             @PathVariable("transactionId") final Long transactionId){
         AccountTransactionDto AccountTransaction = fetchAccountTransactionFlow.getAccountTransactionById(transactionId);
-        GeneralResponse<AccountTransactionDto> response = new GeneralResponse<>(true, accountTransaction);
+        GeneralResponse<AccountTransactionDto> response = new GeneralResponse<>(true, AccountTransaction);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

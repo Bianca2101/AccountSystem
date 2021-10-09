@@ -27,11 +27,14 @@ public class CreateAccountTransactionFlowImpl implements CreateAccountTransactio
         accountTransactionDto.setTransactionID(null);
 
         AccountTypeDto accountType = fetchAccountTypeFLow.getAccountTypeByMnemonic(accountTransactionDto.getAccountTypeMnemonic());
-        AccountTransaction accountTransaction = accountTransactionDto.buildAccountTransaction(accountTransaction);
+        AccountTransaction accountTransaction = accountTransactionDto.buildAccountTransaction(accountType);
+
+        AccountTransaction createdAccountTransaction = accountTransactionTranslator.save(accountTransaction);
 
         if(null != accountTransactionDto.getDetails()){
             AccountTransactionDetails accountTransactionDetails = accountTransactionDto.getDetails().buildAccountTransactionDetails(createdAccountTransaction);
             accountTransactionDetailsTranslator.save(accountTransactionDetails);
         }
+        return new AccountTransactionDto(createdAccountTransaction);
     }
 }

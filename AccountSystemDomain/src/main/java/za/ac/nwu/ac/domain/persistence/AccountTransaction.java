@@ -32,13 +32,7 @@ public class AccountTransaction implements Serializable {
         this.details = details;
     }
 
-    public AccountTransactionDetails getDetails() {
-        return details;
-    }
 
-    public void setDetails(AccountTransactionDetails details) {
-        this.details = details;
-    }
 
     @Id
     @SequenceGenerator(name = "DEMO_ACCOUNT_TYPE_SEQUENCE", sequenceName = "CMPG323.DEMO_ACCOUNT_TYPE_SEQUENCE", allocationSize = 1)
@@ -89,17 +83,26 @@ public class AccountTransaction implements Serializable {
         this.transactionDate = transactionDate;
     }
 
+    @OneToOne(targetEntity = AccountTransactionDetails.class, fetch = FetchType.LAZY, mappedBy = "accountTransaction", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    public AccountTransactionDetails getDetails() {
+        return details;
+    }
+
+    public void setDetails(AccountTransactionDetails details) {
+        this.details = details;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTransaction that = (AccountTransaction) o;
-        return Objects.equals(transactionID, that.transactionID) && Objects.equals(accountType, that.accountType) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate) && Objects.equals(details, that.details);
+        return Objects.equals(transactionID, that.transactionID) && Objects.equals(accountType, that.accountType) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate) ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(transactionID, accountType, memberId, amount, transactionDate, details);
+        return Objects.hash(transactionID, accountType, memberId, amount, transactionDate);
     }
 
     @Override

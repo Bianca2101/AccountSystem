@@ -7,29 +7,13 @@ import java.util.Objects;
 @Entity
 @Table(name = "ACCOUNT_TX_DETAILS", schema = "CMPG323")
 public class AccountTransactionDetails implements Serializable {
+
     private static final long serialVersionUID = 4562890339977033624L;
 
-
-    private Long accountTransactionDetailsId;
-    private AccountTransaction accountTransaction;
-    private String partnerName;
-    private Long numberOfItems;
-
-    public AccountTransactionDetails(String partnerName, Long numberOfItems) {
-    }
-
-    public AccountTransactionDetails(Long accountTransactionDetailsId, AccountTransaction accountTransaction, String partnerName, Long numberOfItems) {
-        this.accountTransactionDetailsId = accountTransactionDetailsId;
-        this.accountTransaction = accountTransaction;
-        this.partnerName = partnerName;
-        this.numberOfItems = numberOfItems;
-    }
-
-    public AccountTransactionDetails(AccountTransaction accountTransaction, String partnerName, Long numberOfItems) {
-    }
-
-    public AccountTransactionDetails(AccountTransactionDetails details) {
-    }
+    Long accountTransactionDetailsId;
+    AccountTransaction accountTransaction;
+    String partnerName;
+    Long numberOfItems;
 
     @Id
     @SequenceGenerator(name = "ACCOUNT_SEQ", sequenceName = "CMPG323.ACCOUNT_SEQ", allocationSize = 1)
@@ -68,6 +52,14 @@ public class AccountTransactionDetails implements Serializable {
     }
 
     public void setNumberOfItems(Long numberOfItems) {
+        this.numberOfItems = numberOfItems;
+    }
+
+    public AccountTransactionDetails(AccountTransactionDetails details) {
+    }
+    public AccountTransactionDetails( AccountTransaction accountTransaction, String partnerName, Long numberOfItems) {
+        this.accountTransaction = accountTransaction;
+        this.partnerName = partnerName;
         this.numberOfItems = numberOfItems;
     }
 
