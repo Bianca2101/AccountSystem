@@ -7,7 +7,7 @@ import java.util.Objects;
 
 
 @Entity
-@Table(name = "DEMO_ACCOUNT_TYPE", schema = "CMPG323")
+@Table(name = "DEMO_ACCOUNT_TYPE")
 public class AccountTransaction implements Serializable {
 
     private static final long serialVersionUID = -1420294317019175746L;
@@ -34,8 +34,8 @@ public class AccountTransaction implements Serializable {
 
 
     @Id
-    @SequenceGenerator(name = "DEMO_ACCOUNT_TYPE_SEQUENCE", sequenceName = "CMPG323.DEMO_ACCOUNT_TYPE_SEQUENCE", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DEMO_ACCOUNT_TYPE_SEQUENCE")
+    @SequenceGenerator(name = "SEQ", sequenceName = "SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ")
     @Column(name = "ACCOUNT_TX_ID")
     public Long getTransactionID() {
         return transactionID;

@@ -13,7 +13,7 @@ public interface AccountTypeRepository extends JpaRepository<AccountType, Long> 
             "           CREATION_DATE,"+
             "           MNEMONIC"+
             "       FROM "+
-            "           CMPG323.DEMO_ACCOUNT_TYPE"+
+            "           DEMO_ACCOUNT_TYPE"+
             "       WHERE MNEMONIC = :mnemonic ", nativeQuery = true)
     AccountType getAccountTypeByMnemonicNativeQuery(String mnemonic);
 

@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "DEMO_ACCOUNT_TYPE", schema = "CMPG323")
+@Table(name = "DEMO_ACCOUNT_TYPE")
 
 public class AccountType implements Serializable {
 
@@ -15,26 +15,31 @@ public class AccountType implements Serializable {
 
     private Long accountTypeId;
     private String mnemonic;
-    private String AccountTypeName;
+    private String accountTypeName;
     private LocalDate creationDate;
 
     private Set<AccountTransaction> accountTransactions;
     //@JsonSerializable(using = LocalDateSerializer.class)
     //@JsonSerializable(using = LocalDateDeserializer.class)
 
-    public AccountType(String mnemonic, String accountTypeName, LocalDate creationDate) {
+    public AccountType() {
     }
 
     public AccountType(Long accountTypeId, String mnemonic, String accountTypeName, LocalDate creationDate) {
         this.accountTypeId = accountTypeId;
         this.mnemonic = mnemonic;
-        AccountTypeName = accountTypeName;
+        this.accountTypeName = accountTypeName;
+        this.creationDate = creationDate;
+    }
+    public AccountType(String mnemonic, String accountTypeName, LocalDate creationDate) {
+        this.mnemonic = mnemonic;
+        this.accountTypeName = accountTypeName;
         this.creationDate = creationDate;
     }
 
     @Id
-    @SequenceGenerator(name = "DEMO_ACCOUNT_TYPE_SEQUENCE", sequenceName = "CMPG323.DEMO_ACCOUNT_TYPE_SEQUENCE", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DEMO_ACCOUNT_TYPE_SEQUENCE")
+    @SequenceGenerator(name = "SEQ", sequenceName = "SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ")
     @Column(name = "ACCOUNT_TYPE_ID")
     public Long getAccountTypeId() {
         return accountTypeId;
@@ -55,11 +60,11 @@ public class AccountType implements Serializable {
 
     @Column(name = "ACCOUNT_TYPE_NAME")
     public String getAccountTypeName() {
-        return AccountTypeName;
+        return accountTypeName;
     }
 
     public void setAccountTypeName(String accountTypeName) {
-        AccountTypeName = accountTypeName;
+        this.accountTypeName = accountTypeName;
     }
 
     @Column(name = "CREATION_DATE")
@@ -85,12 +90,12 @@ public class AccountType implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountType that = (AccountType) o;
-        return Objects.equals(accountTypeId, that.accountTypeId) && Objects.equals(mnemonic, that.mnemonic) && Objects.equals(AccountTypeName, that.AccountTypeName) && Objects.equals(creationDate, that.creationDate);
+        return Objects.equals(accountTypeId, that.accountTypeId) && Objects.equals(mnemonic, that.mnemonic) && Objects.equals(accountTypeName, that.accountTypeName) && Objects.equals(creationDate, that.creationDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accountTypeId, mnemonic, AccountTypeName, creationDate);
+        return Objects.hash(accountTypeId, mnemonic, accountTypeName, creationDate);
     }
 
     @Override
@@ -98,7 +103,7 @@ public class AccountType implements Serializable {
         return "AccountType{" +
                 "accountTypeId=" + accountTypeId +
                 ", mnemonic='" + mnemonic + '\'' +
-                ", AccountTypeName='" + AccountTypeName + '\'' +
+                ", AccountTypeName='" + accountTypeName + '\'' +
                 ", creationDate=" + creationDate +
                 '}';
     }

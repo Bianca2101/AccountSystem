@@ -1,5 +1,7 @@
 package za.ac.nwu.ac.translator.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
@@ -15,7 +17,7 @@ import java.util.List;
 public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
 
     private final AccountTypeRepository accountTypeRepository;
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(AccountTypeTranslatorImpl.class);
     @Autowired
     public AccountTypeTranslatorImpl(AccountTypeRepository accountTypeRepository){
         this.accountTypeRepository = accountTypeRepository;
@@ -37,7 +39,9 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
     @Override
     public AccountTypeDto create(AccountTypeDto accountTypeDto){
         try{
+            LOGGER.info("Input object is {}", accountTypeDto);
             AccountType accountType = accountTypeRepository.save(accountTypeDto.getAccountType());
+            LOGGER.info("Output object is {}",accountType);
             return new AccountTypeDto(accountType);
         }catch (Exception e){
             throw new RuntimeException("Unable to save to the DB", e);
