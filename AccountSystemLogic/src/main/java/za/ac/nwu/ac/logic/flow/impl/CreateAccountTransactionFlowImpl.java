@@ -2,9 +2,9 @@ package za.ac.nwu.ac.logic.flow.impl;
 
 import org.springframework.stereotype.Component;
 import za.ac.nwu.ac.domain.dto.AccountTransactionDto;
+import za.ac.nwu.ac.domain.dto.AccountTypeDto;
 import za.ac.nwu.ac.domain.persistence.AccountTransaction;
 import za.ac.nwu.ac.domain.persistence.AccountTransactionDetails;
-import za.ac.nwu.ac.domain.persistence.AccountType;
 import za.ac.nwu.ac.logic.flow.CreateAccountTransactionFlow;
 import za.ac.nwu.ac.logic.flow.FetchAccountTypeFLow;
 import za.ac.nwu.ac.translator.AccountTransactionDetailsTranslator;
@@ -26,7 +26,7 @@ public class CreateAccountTransactionFlowImpl implements CreateAccountTransactio
     public AccountTransactionDto create(AccountTransactionDto accountTransactionDto){
         accountTransactionDto.setTransactionID(null);
 
-        AccountType accountType = fetchAccountTypeFLow.getAccountTypeByMnemonic(accountTransactionDto.getAccountTypeMnemonic());
+        AccountTypeDto accountType = fetchAccountTypeFLow.getAccountTypeByMnemonic(accountTransactionDto.getAccountTypeMnemonic());
         AccountTransaction accountTransaction = accountTransactionDto.buildAccountTransaction(accountTransaction);
 
         if(null != accountTransactionDto.getDetails()){

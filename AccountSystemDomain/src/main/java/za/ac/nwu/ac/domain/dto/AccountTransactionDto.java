@@ -47,7 +47,7 @@ public class AccountTransactionDto {
         this.transactionDate = accountTransaction.getTransactionDate();
         this.details = accountTransaction.getDetails();
         if(null != accountTransaction.getDetails()){
-            this.details = new AccountTransactionDetailsDto(accountTransaction.getDetails());
+            this.details = new AccountTransactionDetails(accountTransaction.getDetails());
         }
     }
 

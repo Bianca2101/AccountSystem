@@ -20,7 +20,7 @@ public class AccountTransaction implements Serializable {
 
     private AccountTransactionDetails details;
 
-    public AccountTransaction() {
+    public AccountTransaction(Long transactionID, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate) {
     }
 
     public AccountTransaction(Long transactionID, AccountType accountType, Long memberId, Long amount, LocalDate transactionDate, AccountTransactionDetails details) {

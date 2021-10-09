@@ -8,7 +8,7 @@ public class AccountTransactionDetailsTranslatorImpl implements AccountTransacti
     private AccountTransactionDetailsTranslator repo;
 
     public AccountTransactionDetailsTranslatorImpl(AccountTransactionDetailsRepository accountTransactionDetailsRepository) {
-        this.repo = accountTransactionDetailsRepository;
+        this.repo = (AccountTransactionDetailsTranslator) accountTransactionDetailsRepository;
     }
 
     @Override

@@ -15,7 +15,7 @@ public class AccountTransactionDetails implements Serializable {
     private String partnerName;
     private Long numberOfItems;
 
-    public AccountTransactionDetails() {
+    public AccountTransactionDetails(String partnerName, Long numberOfItems) {
     }
 
     public AccountTransactionDetails(Long accountTransactionDetailsId, AccountTransaction accountTransaction, String partnerName, Long numberOfItems) {
@@ -23,6 +23,12 @@ public class AccountTransactionDetails implements Serializable {
         this.accountTransaction = accountTransaction;
         this.partnerName = partnerName;
         this.numberOfItems = numberOfItems;
+    }
+
+    public AccountTransactionDetails(AccountTransaction accountTransaction, String partnerName, Long numberOfItems) {
+    }
+
+    public AccountTransactionDetails(AccountTransactionDetails details) {
     }
 
     @Id

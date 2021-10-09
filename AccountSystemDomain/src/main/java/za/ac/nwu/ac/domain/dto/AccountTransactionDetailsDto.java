@@ -11,7 +11,7 @@ public class AccountTransactionDetailsDto{
     String partnerName;
     Long numberOfItems;
 
-    public AccountTransactionDetailsDto() {
+    public AccountTransactionDetailsDto(AccountTransactionDetails details) {
     }
 
     public AccountTransactionDetailsDto(String partnerName, Long numberOfItems) {
