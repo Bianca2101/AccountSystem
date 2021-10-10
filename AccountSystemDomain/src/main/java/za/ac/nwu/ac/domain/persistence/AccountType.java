@@ -76,7 +76,7 @@ public class AccountType implements Serializable {
         this.creationDate = creationDate;
     }
 
-    @OneToMany(targetEntity = AccountTransaction.class, fetch = FetchType.LAZY, mappedBy = "accountType")
+    @OneToMany(targetEntity = AccountTransaction.class, fetch = FetchType.LAZY, mappedBy = "accountType", cascade = CascadeType.ALL)
     public Set<AccountTransaction> getAccountTransactions(){
         return accountTransactions;
     }

@@ -32,7 +32,7 @@ public class FetchAccountTypeFLowImpl implements FetchAccountTypeFLow {
 
     @Override
     public AccountType getAccountTypeDbEntityByMnemonic(String accountTypeMnemonic) {
-        return null;
+        return accountTypeTranslator.getAccountTypeDbEntityByMnemonic(accountTypeMnemonic);
     }
 
     public boolean methodToTest(){

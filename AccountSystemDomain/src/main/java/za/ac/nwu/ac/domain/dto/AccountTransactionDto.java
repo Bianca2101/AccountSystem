@@ -15,18 +15,19 @@ public class AccountTransactionDto {
     private Long memberId;
     private Long amount;
     private LocalDate transactionDate;
+    private Long balance;
 
 
     public AccountTransactionDto() {
     }
 
-    public AccountTransactionDto(Long transactionID, String accountTypeMnemonic, Long memberId, Long amount, LocalDate transactionDate) {
+    public AccountTransactionDto(Long transactionID, String accountTypeMnemonic, Long memberId, Long amount, LocalDate transactionDate, Long balance) {
         this.transactionID = transactionID;
         this.accountTypeMnemonic = accountTypeMnemonic;
         this.memberId = memberId;
         this.amount = amount;
         this.transactionDate = transactionDate;
-
+        this.balance = balance;
     }
 
 
@@ -36,11 +37,12 @@ public class AccountTransactionDto {
         this.memberId = accountTransaction.getMemberId();
         this.amount = accountTransaction.getAmount();
         this.transactionDate = accountTransaction.getTransactionDate();
+        this.balance = accountTransaction.getBalance();
     }
 
     @JsonIgnore
     public AccountTransaction buildAccountTransaction(AccountType accountType){
-        return new AccountTransaction(this.getTransactionID(), accountType, this.getMemberId(), this.getAmount(), this.getTransactionDate());
+        return new AccountTransaction(this.getTransactionID(), accountType, this.getMemberId(), this.getAmount(), this.getTransactionDate(),this.getBalance());
     }
 
 
@@ -84,6 +86,13 @@ public class AccountTransactionDto {
         this.transactionDate = transactionDate;
     }
 
+    public Long getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Long balance) {
+        this.balance = balance;
+    }
 
 
     @Override
@@ -91,7 +100,7 @@ public class AccountTransactionDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTransactionDto that = (AccountTransactionDto) o;
-        return Objects.equals(transactionID, that.transactionID) && Objects.equals(accountTypeMnemonic, that.accountTypeMnemonic) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate);
+        return Objects.equals(transactionID, that.transactionID) && Objects.equals(accountTypeMnemonic, that.accountTypeMnemonic) && Objects.equals(memberId, that.memberId) && Objects.equals(amount, that.amount) && Objects.equals(transactionDate, that.transactionDate)&& Objects.equals(balance, that.balance);
     }
 
     @Override
@@ -107,6 +116,7 @@ public class AccountTransactionDto {
                 ", memberId=" + memberId +
                 ", amount=" + amount +
                 ", transactionDate=" + transactionDate +
+                ", balance=" + balance +
                 '}';
     }
 }

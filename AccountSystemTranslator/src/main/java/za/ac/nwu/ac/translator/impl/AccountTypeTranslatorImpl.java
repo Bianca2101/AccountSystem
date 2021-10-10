@@ -92,4 +92,13 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
     public AccountTypeDto updateAccountType(String mnemonic, String newAccountTypeName, LocalDate newCreationDate) {
         return null;
     }
+
+    @Override
+    public AccountType getAccountTypeDbEntityByMnemonic(String accountTypeMnemonic) {
+        try{
+            return accountTypeRepository.getAccountTypeByMnemonic(accountTypeMnemonic);
+        }catch (Exception e){
+            throw new RuntimeException("Unable to read from the DB", e);
+        }
+    }
 }
